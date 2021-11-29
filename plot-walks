@@ -1,0 +1,53 @@
+from turtle import *
+from random import *
+from matplotlib.pyplot import *
+import math
+import numpy
+
+
+def ranWalk(turt, walks, stepLen):
+    lab.reset()
+    for i in range(walks):
+        lab.forward(stepLen)
+        lab.setheading(randint(0, 360))
+
+
+clearscreen()
+tracer(100, 0)
+
+lab = Turtle()
+walks = 21
+stepLen = 5
+interval = 50
+trials = 25
+
+x = []
+y = []
+
+print("Random Walks with a Step Length of", stepLen)
+print("STEP DISTANCE")
+
+for walk in range(walks):
+    trialDist = 0
+    for trial in range(trials):
+        ranWalk(lab, walk * interval, stepLen)
+        distance = lab.distance(0, 0)
+        trialDist = trialDist + distance
+
+    x.append(walk * interval)
+    y.append(trialDist / trials)
+
+    print(" " + str(walk * interval) + " : " + str(trialDist / trials))
+
+scale = 0.9
+distance_fit = scale * stepLen * numpy.sqrt(x)
+
+plot(x, distance_fit, 'b-')
+xlim([0, 1100])
+ylim([0, 200])
+title("Random Walk Distance")
+xlabel("Number of Steps")
+ylabel("Distance from Starting Point")
+grid(True)
+plot( x , y , 'r.')
+show()
