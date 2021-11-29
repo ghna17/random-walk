@@ -1,0 +1,15 @@
+from turtle import *
+from random import *
+
+def ranWalk(turt,steps,dis):
+	lab.setpos(0,0)
+	for i in range(steps):
+		lab.forward(dis)
+		lab.setheading(randint(0,360))
+	print(lab.distance(0,0))
+
+lab = Turtle()
+lab.reset()
+
+ranWalk(lab,10,10)
+
