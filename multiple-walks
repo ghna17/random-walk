@@ -1,0 +1,25 @@
+from turtle import *
+from random import *
+
+def ranWalk(turt,walks,stepLen):
+	lab.setpos(0,0)
+	for i in range(walks):
+		lab.forward(stepLen)
+		lab.setheading(randint(0,360))
+
+clearscreen()
+tracer(10,0)
+
+lab = Turtle()
+lab.reset()
+walks = 21
+stepLen = 5
+interval = 50
+
+print("Random Walks with a Step Length of", stepLen)
+print("STEP DISTANCE")
+
+for walk in range(walks):
+	ranWalk(lab, walk * interval, stepLen)
+	distance = lab.distance(0,0)
+	print(" " + str(walk * interval) + " : " + str(distance))
